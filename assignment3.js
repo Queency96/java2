@@ -1,4 +1,4 @@
-// Nigeria Presidents and their ages (as of March 2024)
+// Nigeria Presidents and their ages
 const presidents = [
   { name: 'Nnamdi Azikiwe', age: 117 },
   { name: 'Olusegun Obasanjo', age: 85 },
@@ -15,6 +15,7 @@ const presidents = [
 
 // Function to start the quiz
 function startQuiz() {
+  // Collecting user's data before the game starts
   const userName = prompt('Enter your username:');
   const cohortNumber = prompt('Enter your cohort number:');
   const passcode = parseInt(prompt('Enter your passcode:'));
@@ -25,16 +26,21 @@ function startQuiz() {
     return;
   }
 
+  // Setting initial score to zero & failed question(s) to empty array
   let score = 0;
   const failedQuestions = [];
 
   // Ask questions
   presidents.forEach((president) => {
+    // Prompting for user input as storing it to Guess variable
     const guess = parseInt(prompt(`How old is ${president.name}?`));
 
+    // Checking if the input is number and the number is equal the president age
     if (!isNaN(guess) && guess === president.age) {
+      // Scored 10% if the input and the age tallied
       score += 10;
     } else {
+      // Pushing the failed questions  and corresponding answers inside failed questions array
       failedQuestions.push(`${president.name} is ${president.age} years old.`);
     }
   });
